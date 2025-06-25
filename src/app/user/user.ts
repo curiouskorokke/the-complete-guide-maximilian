@@ -15,4 +15,8 @@ export class User {
   get userAvatarImg() {
     return 'users/' + this.user.avatar;
   }
+
+  onSelectUser() {
+    console.log('Clicked!');
+  }
 }
