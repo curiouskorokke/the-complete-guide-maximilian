@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Header } from './header/header';
 
+// @Component: Decorators is a typescript feature that is used to add metadata & configuration to classes
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Header],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected title = 'the-complete-guide-maximilian';
