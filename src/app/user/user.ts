@@ -10,13 +10,17 @@ import { DUMMY_USERS } from './users.mock-data';
 export class User {
   dummyUsers = DUMMY_USERS;
 
-  user = this.dummyUsers[Math.floor(Math.random() * this.dummyUsers.length)];
+  user = this.dummyUsers[this.randomNumber(this.dummyUsers.length)];
 
   get userAvatarImg() {
     return 'users/' + this.user.avatar;
   }
 
+  randomNumber(length: number) {
+    return Math.floor(Math.random() * length);
+  }
+
   onSelectUser() {
-    console.log('Clicked!');
+    this.user = this.dummyUsers[this.randomNumber(this.dummyUsers.length)];
   }
 }
