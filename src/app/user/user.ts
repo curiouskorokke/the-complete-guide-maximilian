@@ -11,4 +11,8 @@ export class User {
   dummyUsers = DUMMY_USERS;
 
   user = this.dummyUsers[Math.floor(Math.random() * this.dummyUsers.length)];
+
+  get userAvatarImg() {
+    return 'users/' + this.user.avatar;
+  }
 }
