@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { UserInterface } from './user.interface';
 
 @Component({
   selector: 'app-user',
@@ -7,11 +8,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user.css',
 })
 export class User {
-  @Input({ required: true }) userId!: string;
-  @Input({ required: true }) name!: string;
-  @Input({ required: true }) avatar!: string;
+  @Input({ required: true }) user!: UserInterface;
   get userAvatarImg() {
-    return 'users/' + this.avatar;
+    return 'users/' + this.user.avatar;
   }
 
   randomNumber(length: number) {

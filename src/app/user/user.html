@@ -1,8 +1,8 @@
 <div>
   <button type="button">
     <!-- [src], [alt]: Property binding  -->
-    <img [src]="userAvatarImg" [alt]="name" />
+    <img [src]="userAvatarImg" [alt]="this.user.name" />
     <!-- {{ var }}: String Interpolation  -->
-    <span>{{ name }}</span>
+    <span>{{ this.user.name }}</span>
   </button>
 </div>
