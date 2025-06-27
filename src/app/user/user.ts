@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { DUMMY_USERS } from './users.mock-data';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,19 +7,14 @@ import { DUMMY_USERS } from './users.mock-data';
   styleUrl: './user.css',
 })
 export class User {
-  dummyUsers = DUMMY_USERS;
-
-  user = this.dummyUsers[this.randomNumber(this.dummyUsers.length)];
-
+  @Input({ required: true }) userId!: string;
+  @Input({ required: true }) name!: string;
+  @Input({ required: true }) avatar!: string;
   get userAvatarImg() {
-    return 'users/' + this.user.avatar;
+    return 'users/' + this.avatar;
   }
 
   randomNumber(length: number) {
     return Math.floor(Math.random() * length);
-  }
-
-  onSelectUser() {
-    this.user = this.dummyUsers[this.randomNumber(this.dummyUsers.length)];
   }
 }
