@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
 import { Header } from './header/header';
-import { User } from './user/user';
 import { DUMMY_USERS } from './user/users.mock-data';
+import { UserComponent } from './user/user';
+import { UserDetailComponent } from './user/detail/detail';
+import { UserInterface } from './user/user.interface';
 
 // @Component: Decorators is a typescript feature that is used to add metadata & configuration to classes
 @Component({
   selector: 'app-root',
-  imports: [Header, User],
+  imports: [Header, UserComponent, UserDetailComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  users = DUMMY_USERS;
+export class AppComponent {
   protected title = 'the-complete-guide-maximilian';
+  users = DUMMY_USERS;
+  currentUser?: UserInterface;
+
+  handleSelectedUser(id: string) {
+    this.currentUser = this.users.find((user) => user.id === id);
+  }
 }

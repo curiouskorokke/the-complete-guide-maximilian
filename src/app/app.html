@@ -4,8 +4,18 @@
   <ul id="users">
     @for (user of users; track user.id) {
     <li>
-      <app-user [user]="user"></app-user>
+      <app-user
+        [user]="user"
+        (selectedUser)="handleSelectedUser($event)"
+      ></app-user>
     </li>
     }
   </ul>
+  <section>
+    @if (currentUser) {
+    <app-user-detail [user]="currentUser"></app-user-detail>
+    } @else {
+    <p>Please select a user</p>
+    }
+  </section>
 </main>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserInterface } from './user.interface';
 
 @Component({
@@ -7,13 +7,18 @@ import { UserInterface } from './user.interface';
   templateUrl: './user.html',
   styleUrl: './user.css',
 })
-export class User {
+export class UserComponent {
   @Input({ required: true }) user!: UserInterface;
+  @Output() selectedUser = new EventEmitter<string>();
   get userAvatarImg() {
     return 'users/' + this.user.avatar;
   }
 
   randomNumber(length: number) {
     return Math.floor(Math.random() * length);
+  }
+
+  onSelectUser(id: string) {
+    this.selectedUser.emit(id);
   }
 }
