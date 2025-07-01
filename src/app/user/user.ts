@@ -9,6 +9,7 @@ import { UserInterface } from './user.interface';
 })
 export class UserComponent {
   @Input({ required: true }) user!: UserInterface;
+  @Input({ required: true }) isSelected!: boolean;
   @Output() selectedUser = new EventEmitter<string>();
   get userAvatarImg() {
     return 'users/' + this.user.avatar;

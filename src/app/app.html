@@ -6,16 +6,17 @@
     <li>
       <app-user
         [user]="user"
+        [isSelected]="user.id === currentUser?.id"
         (selectedUser)="handleSelectedUser($event)"
       ></app-user>
     </li>
     }
   </ul>
   <section>
-    @if (currentUser) {
-    <app-user-detail [user]="currentUser"></app-user-detail>
+    @if(currentUser) {
+    <app-tasks [user]="currentUser" />
     } @else {
-    <p>Please select a user</p>
+    <p>Please select a user to show their task</p>
     }
   </section>
 </main>

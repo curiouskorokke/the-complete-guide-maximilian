@@ -1,5 +1,9 @@
 <div>
-  <button type="button" (click)="onSelectUser(this.user.id)">
+  <button
+    [class.active]="isSelected"
+    type="button"
+    (click)="onSelectUser(this.user.id)"
+  >
     <!-- [src], [alt]: Property binding  -->
     <img [src]="userAvatarImg" [alt]="this.user.name" />
     <!-- {{ var }}: String Interpolation  -->
