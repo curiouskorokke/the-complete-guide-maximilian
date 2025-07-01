@@ -1,0 +1,22 @@
+@if (showTaskForm ) {
+<app-task-create
+  [userId]="user.id"
+  (closeDialog)="onDialogClose()"
+  (newTaskCreate)="onTaskCreate($event)"
+/>
+}
+
+<div id="tasks">
+  <header>
+    <h2>{{ user.name }}</h2>
+    <menu>
+      <button type="button" (click)="onStartTaskCreate()">Create</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (task of userTasks; track task.id) {
+    <app-task [task]="task" (taskComplete)="onTaskComplete($event)" />
+    }
+  </ul>
+</div>
