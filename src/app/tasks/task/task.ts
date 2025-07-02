@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskInterface } from './task.model';
 import { SharedCardComponent } from '../../shared/card/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task',
-  imports: [SharedCardComponent],
+  imports: [SharedCardComponent, CommonModule],
   templateUrl: './task.html',
   styleUrl: './task.css',
 })
