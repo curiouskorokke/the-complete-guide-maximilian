@@ -1,27 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { UserInterface } from '../user/user.interface';
 import { TaskComponent } from './task/task';
-import { DUMMY_TASKS } from './tasks.mock-data';
 import { TaskCreateComponent } from './create/create';
 import { TaskInterface } from './task/task.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
   imports: [TaskComponent, TaskCreateComponent],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
+  providers: [TasksService],
 })
 export class TasksComponent {
+  tasksService = inject(TasksService);
   @Input({ required: true }) user!: UserInterface;
-  tasks = DUMMY_TASKS;
+
   showTaskForm = false;
 
   get userTasks() {
-    return this.tasks.filter((task) => task.userId === this.user.id);
+    return this.tasksService.getTasks(this.user.id);
   }
 
   onTaskComplete(taskId: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    this.tasksService.deleteTask(taskId);
   }
 
   onStartTaskCreate() {
@@ -32,7 +34,7 @@ export class TasksComponent {
     this.showTaskForm = false;
   }
   onTaskCreate(task: TaskInterface) {
-    this.tasks.push(task);
+    this.tasksService.addTask(task);
     this.onDialogClose();
   }
 }
