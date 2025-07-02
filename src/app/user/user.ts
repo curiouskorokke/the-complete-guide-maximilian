@@ -4,9 +4,9 @@ import { SharedCardComponent } from '../shared/card/card';
 
 @Component({
   selector: 'app-user',
-  imports: [SharedCardComponent],
   templateUrl: './user.html',
   styleUrl: './user.css',
+  standalone: false,
 })
 export class UserComponent {
   @Input({ required: true }) user!: UserInterface;

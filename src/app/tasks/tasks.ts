@@ -7,10 +7,10 @@ import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponent, TaskCreateComponent],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
   providers: [TasksService],
+  standalone: false,
 })
 export class TasksComponent {
   tasksService = inject(TasksService);

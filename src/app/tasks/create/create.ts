@@ -4,9 +4,9 @@ import { TaskInterface } from '../task/task.model';
 
 @Component({
   selector: 'app-task-create',
-  imports: [FormsModule],
   templateUrl: './create.html',
   styleUrl: './create.css',
+  standalone: false,
 })
 export class TaskCreateComponent {
   @Input({ required: true }) userId!: string;

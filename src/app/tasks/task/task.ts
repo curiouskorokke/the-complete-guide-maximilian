@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task',
-  imports: [SharedCardComponent, CommonModule],
   templateUrl: './task.html',
   styleUrl: './task.css',
+  standalone: false,
 })
 export class TaskComponent {
   @Input({ required: true }) task!: TaskInterface;
